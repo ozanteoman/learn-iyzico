@@ -114,7 +114,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
-IYZIPAY_API_KEY = 'sandbox-NsBnItrVir9OTAn1xktX9KweRPUMR4b6'
-IYZIPAY_API_SECRET = 'sandbox-EWRVJ2bYBGE8VaKHAEHeymVg0ZjryRhb'
-IYZIPAY_API_BASE_URL = 'sandbox-api.iyzipay.com'
