@@ -362,7 +362,7 @@ def payment_with_api_with_saved_payment_card(request):
         'locale': 'tr',
         'conversationId': '123456789',
         'price': '60',
-        'paidPrice': '58',
+        'paidPrice': '60',
         'currency': 'TRY',
         'installment': '1',
         'basketId': 'B67832',
@@ -499,4 +499,62 @@ def success(request):
     checkout_form_result = iyzipay.CheckoutForm().retrieve(data, options)
 
     response = json.loads(checkout_form_result.read().decode('utf-8'))
+    return JsonResponse(data=response)
+
+
+def retrieve_payment_result(request):
+    options = {
+        'api_key': settings.IYZIPAY_API_KEY,
+        'secret_key': settings.IYZIPAY_API_SECRET,
+        'base_url': settings.IYZIPAY_API_BASE_URL
+    }
+
+    data = {
+        'locale': 'tr',
+        'paymentId': '12277814',
+    }
+
+    payment = iyzipay.Payment().retrieve(data, options)
+    response = json.loads(payment.read().decode('utf-8'))
+
+    return JsonResponse(data=response)
+
+
+def cancel_order(request):
+    options = {
+        'api_key': settings.IYZIPAY_API_KEY,
+        'secret_key': settings.IYZIPAY_API_SECRET,
+        'base_url': settings.IYZIPAY_API_BASE_URL
+    }
+
+    data = {
+        'locale': "tr",
+        'paymentId': '12280331',
+        'ip': '85.34.78.112',
+    }
+
+    cancel = iyzipay.Cancel().create(data, options)
+    response = json.loads(cancel.read().decode('utf-8'))
+
+    return JsonResponse(data=response)
+
+
+def refund_order(request):
+    options = {
+        'api_key': settings.IYZIPAY_API_KEY,
+        'secret_key': settings.IYZIPAY_API_SECRET,
+        'base_url': settings.IYZIPAY_API_BASE_URL
+    }
+
+    data = {
+        'locale': "tr",
+        'paymentId': '12280324',
+        'paymentTransactionId': '12985845',
+        'ip': '85.34.78.112',
+        'price': '60',
+
+    }
+
+    refund = iyzipay.Refund().create(data, options)
+    response = json.loads(refund.read().decode('utf-8'))
     return JsonResponse(data=response)

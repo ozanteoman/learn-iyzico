@@ -10,7 +10,10 @@ from iyzico.views import (payment_with_form,
                           create_second_card,
                           retrieve_cards,
                           retrieve_bin,
-                          delete_payment_card
+                          delete_payment_card,
+                          retrieve_payment_result,
+                          cancel_order,
+                          refund_order
                           )
 
 urlpatterns = [
@@ -25,5 +28,8 @@ urlpatterns = [
     path('payment-with-api-with-saved-card', payment_with_api_with_saved_payment_card,
          name="payment-with-api-with-saved-payment-card"),
     path('threeds-success', threeds_success, name="threeds-success"),
-    path('success', success, name="success")
+    path('success', success, name="success"),
+    path('retrieve-payment-result', retrieve_payment_result, name="retrieve-payment-result"),
+    path('cancel-order', cancel_order, name="cancel-order"),
+    path('refund-order', refund_order, name="refund-order")
 ]
