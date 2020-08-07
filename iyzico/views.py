@@ -558,3 +558,31 @@ def refund_order(request):
     refund = iyzipay.Refund().create(data, options)
     response = json.loads(refund.read().decode('utf-8'))
     return JsonResponse(data=response)
+
+
+def create_personel_submerchant(request):
+    options = {
+        'api_key': settings.IYZIPAY_API_KEY,
+        'secret_key': settings.IYZIPAY_API_SECRET,
+        'base_url': settings.IYZIPAY_API_BASE_URL
+    }
+
+    request = {
+        'locale': 'tr',
+        'conversationId': '123456789',
+        'subMerchantExternalId': 'B49224',
+        'subMerchantType': 'PERSONAL',
+        'address': 'Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1',
+        'contactName': 'John',
+        'contactSurname': 'Doe',
+        'email': 'email@submerchantemail.com',
+        'gsmNumber': '+905350000000',
+        'name': 'John\'s market',
+        'iban': 'TR180006200119000006672315',
+        'identityNumber': '31300864726',
+        'currency': 'TRY'
+    }
+
+    sub_merchant = iyzipay.SubMerchant().create(request, options)
+    response = json.loads(sub_merchant.read().decode('utf-8'))
+    return JsonResponse(data=response)

@@ -13,7 +13,8 @@ from iyzico.views import (payment_with_form,
                           delete_payment_card,
                           retrieve_payment_result,
                           cancel_order,
-                          refund_order
+                          refund_order,
+                          create_personel_submerchant
                           )
 
 urlpatterns = [
@@ -31,5 +32,6 @@ urlpatterns = [
     path('success', success, name="success"),
     path('retrieve-payment-result', retrieve_payment_result, name="retrieve-payment-result"),
     path('cancel-order', cancel_order, name="cancel-order"),
-    path('refund-order', refund_order, name="refund-order")
+    path('refund-order', refund_order, name="refund-order"),
+    path('create-personel-submerchant', create_personel_submerchant, name="create-personel-submerchant")
 ]
