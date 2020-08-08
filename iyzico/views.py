@@ -15,6 +15,11 @@ from iyzico.models import UserPaymentCard
     bilgiside gelmektedir böylece bu değerler tutularak kart bilgilerinin sorgusu yapılabilir.
 """
 
+"""
+Pazar yeri isek ve submerchant olmadan satış yapmak için
+paymentGroup -> Listing olabilir. Bu iyzico dökümanında mevcut değil bunu dikkate al.
+Yoksa herbir satışta senden subMerchantKey isteyecektir.
+"""
 
 # Create your views here.
 
